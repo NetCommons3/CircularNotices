@@ -7,7 +7,14 @@ php:
   - 7.0
 
 env:
-  - NETCOMMONS_VERSION=master DB=mysql
+  matrix:
+    - NETCOMMONS_VERSION=master DB=mysql
+      global:
+        - secure: "N1F9JPqNi/V91xNEfAPrdj7fEUNEJeueGVguH1gijNg8oWnMtzPc6kNnadpk8QwCNaHnKPqDcWxFbYohrovT8nGJz+aN9l4orsXQDRK0iZmuD+ydXJbzeWdXJdkH98UanAyO9FYnsPnZhnV2CLZ7VwWF+UY8iPzjXn5jqZIZVNU="
+        - GIT_COMMITTER_NAME=kitalab
+        - GIT_COMMITTER_EMAIL=nc@withone.co.jp
+        - GIT_AUTHOR_NAME=kitalab
+        - GIT_AUTHOR_EMAIL=nc@withone.co.jp
 
 before_script:
   - export NETCOMMONS_BUILD_DIR=`dirname $TRAVIS_BUILD_DIR`/NetCommons3
@@ -21,7 +28,6 @@ script:
   - . tools/build/plugins/cakephp/travis/main.sh
 
 after_script:
-  - cp $TRAVIS_BUILD_DIR/phpunit.xml .
   - . tools/build/plugins/cakephp/travis/post.sh
 
 notifications:
