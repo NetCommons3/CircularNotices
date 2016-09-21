@@ -7,7 +7,8 @@ php:
   - 7.0
 
 env:
-  - NETCOMMONS_VERSION=master DB=mysql
+  matrix:
+    - NETCOMMONS_VERSION=master DB=mysql
 
 before_script:
   - export NETCOMMONS_BUILD_DIR=`dirname $TRAVIS_BUILD_DIR`/NetCommons3
