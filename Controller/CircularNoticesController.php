@@ -428,6 +428,15 @@ class CircularNoticesController extends CircularNoticesAppController {
 			));
 		$this->set('circularNoticeContent', $results['CircularNoticeContent']);
 		$this->set('circularNoticeChoice', $results['CircularNoticeChoice']);
+
+		// 回覧板の記事が削除できないため、削除Formの$this->NetCommonsForm->hidden('Frame.id')等を配置してる項目は
+		// リクエストにセットする。
+		// リクエストにセットすると、$this->NetCommonsForm->hidden('Frame.id')のvalueに自動的にセットされる。
+		// 削除Form: app/Plugin/CircularNotices/View/Elements/CircularNotices/delete_form.ctp
+		// @see https://github.com/NetCommons3/NetCommons3/issues/1547
+		$this->request->data['CircularNoticeContent'] = $results['CircularNoticeContent'];
+		$this->request->data['Frame'] = Current::read('Frame');
+		$this->request->data['Block'] = Current::read('Block');
 	}
 
 /**
