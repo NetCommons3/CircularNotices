@@ -38,7 +38,7 @@ class CircularNoticeTargetUserBehavior extends ModelBehavior {
 			'User' => 'Users.User',
 		));
 
-		if (! $model->data['CircularNoticeContent']['is_room_target']) {
+		if (empty($model->data['CircularNoticeContent']['is_room_target'])) {
 			// 回覧先ユーザのバリデーション処理
 			if (! isset($model->data['CircularNoticeTargetUser'])) {
 				$model->data['CircularNoticeTargetUser'] = array();
