@@ -495,11 +495,13 @@ class CircularNoticeContent extends CircularNoticesAppModel {
 			// 保存されたCircularNoticeContentでデータを差し替え
 			if (isset($content['CircularNoticeContent'])) {
 				$data['CircularNoticeContent'] = $content['CircularNoticeContent'];
+			} else {
+				$data['CircularNoticeContent'] = null;
+			}
 
-				// CircularNoticeChoices・CircularNoticeTargetUsersを保存
-				if (! $this->__saveChoiceAndTargetUsers($data)) {
-					return false;
-				}
+			// CircularNoticeChoices・CircularNoticeTargetUsersを保存
+			if (! $this->__saveChoiceAndTargetUsers($data)) {
+				return false;
 			}
 
 			$this->commit();
