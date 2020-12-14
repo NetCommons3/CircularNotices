@@ -57,6 +57,11 @@
 						'value' => Current::read('Block.id'),
 					)); ?>
 
+					<?php // WysiwygBehaviorのafterSaveでblock_keyが設定されるように、ここでBlock.keyを用意する ?>
+					<?php echo $this->NetCommonsForm->hidden('Block.key', array(
+						'value' => Current::read('Block.key'),
+					)); ?>
+
 					<?php echo $this->NetCommonsForm->hidden('CircularNoticeContent.id', array(
 						'value' => isset($circularNoticeContent['id']) ? $circularNoticeContent['id'] : null,
 					)); ?>
