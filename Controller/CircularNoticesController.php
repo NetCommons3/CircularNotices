@@ -89,7 +89,7 @@ class CircularNoticesController extends CircularNoticesAppController {
  * index action
  *
  * @return void
- * 
+ *
  * 速度改善の修正に伴って発生したため抑制
  * @SuppressWarnings(PHPMD.CyclomaticComplexity)
  * @SuppressWarnings(PHPMD.NPathComplexity)
@@ -139,7 +139,7 @@ class CircularNoticesController extends CircularNoticesAppController {
 		$currentSort = isset($this->params['named']['sort'])
 			? $this->params['named']['sort']
 			: 'CircularNoticeContent.modified';
-		$currentDirection = isset($this->params['named']['sort'])
+		$currentDirection = isset($this->params['named']['direction'])
 			? $this->params['named']['direction']
 			: 'desc';
 		if (! isset($sortOptions[$currentSort . '.' . $currentDirection])) {
