@@ -56,7 +56,6 @@ class CircularNoticeTargetUser extends CircularNoticesAppModel {
  * @return bool
  */
 	public function validateNotEmptyReplyValue($check) {
-		CakeLog::error(var_export($this->data['CircularNoticeTargetUser'], true));
 		if (! $this->data['CircularNoticeTargetUser']['reply_text_value'] &&
 			! $this->data['CircularNoticeTargetUser']['reply_selection_value']
 		) {
