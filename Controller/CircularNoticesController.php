@@ -506,9 +506,13 @@ class CircularNoticesController extends CircularNoticesAppController {
 			$csvFile->add($header);
 
 			// 回答データ整形
+			$choices = array();
+			foreach ($content['CircularNoticeChoice'] as $choice) {
+				$choices[$choice['id']] = $choice;
+			}
 			$content = $content['CircularNoticeContent'];
 			foreach ($targetUsers as $targetUser) {
-				$answer = $this->__parseAnswer($content['reply_type'], $targetUser);
+				$answer = $this->__parseAnswer($content['reply_type'], $targetUser, $choices);
 
 				$readDatetime = __d('circular_notices', 'Unread');
 				if ($targetUser['CircularNoticeTargetUser']['read_datetime']) {
@@ -550,9 +554,10 @@ class CircularNoticesController extends CircularNoticesAppController {
  *
  * @param string $replyType 回答種別
  * @param array $targetUser 回答者
+ * @param array $choices 選択肢情報
  * @return null|string
  */
-	private function __parseAnswer($replyType, $targetUser) {
+	private function __parseAnswer($replyType, $targetUser, $choices) {
 		$answer = null;
 		switch ($replyType) {
 			case CircularNoticeComponent::CIRCULAR_NOTICE_CONTENT_REPLY_TYPE_TEXT:
@@ -562,6 +567,10 @@ class CircularNoticesController extends CircularNoticesAppController {
 			case CircularNoticeComponent::CIRCULAR_NOTICE_CONTENT_REPLY_TYPE_MULTIPLE_SELECTION:
 				$selectionValues = explode(CircularNoticeComponent::SELECTION_VALUES_DELIMITER,
 					$targetUser['CircularNoticeTargetUser']['reply_selection_value']);
+				// 取り出したreply_selection_valueの値を選択肢のラベルに変換する
+				foreach ($selectionValues as &$selectVal) {
+					$selectVal = $choices[$selectVal]['value'] ?? '';
+				}
 				$answer = implode(__d('circular_notices', 'Answer separator'), $selectionValues);
 				break;
 		}
