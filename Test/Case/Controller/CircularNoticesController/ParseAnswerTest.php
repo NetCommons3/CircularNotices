@@ -65,6 +65,7 @@ class CircularNoticesControllerParseAnswerTest extends NetCommonsControllerTestC
 						'reply_text_value' => 'Lorem ipsum dolor sit amet'
 					),
 				),
+				'choices' => array()
 			),
 			'assert' => 'Lorem ipsum dolor sit amet'
 		);
@@ -78,8 +79,14 @@ class CircularNoticesControllerParseAnswerTest extends NetCommonsControllerTestC
 						'reply_selection_value' => '1|3',
 					),
 				),
+				'choices' => array(
+					1 => array('id' => 1, 'value' => 'AAA'),
+					2 => array('id' => 2, 'value' => 'BBB'),
+					3 => array('id' => 3, 'value' => 'CCC'),
+					4 => array('id' => 4, 'value' => 'DDD')
+				)
 			),
-			'assert' => '1、3'
+			'assert' => 'AAA、CCC'
 		);
 
 		return $results;
@@ -103,7 +110,8 @@ class CircularNoticesControllerParseAnswerTest extends NetCommonsControllerTestC
 		$result = $method->invoke(
 			$stub,
 			$data['CircularNoticeContent']['reply_type'],
-			$data['CircularNoticeTargetUser']
+			$data['CircularNoticeTargetUser'],
+			$data['choices']
 		);
 		$this->assertEquals($result, $assert);
 	}
