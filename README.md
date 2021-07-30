@@ -1,14 +1,6 @@
 CircularNotices
 =======
 
-CircularNotices for NetComomns3
-
-[![Build Status](https://travis-ci.org/NetCommons3/CircularNotices.svg?branch=master)](https://travis-ci.org/NetCommons3/CircularNotices)
-[![Coverage Status](https://img.shields.io/coveralls/NetCommons3/CircularNotices.svg)](https://coveralls.io/r/NetCommons3/CircularNotices?branch=master)
-
-| dependencies | status |
-| ------------ | ------ |
-| composer.json | [![Dependency Status](https://www.versioneye.com/user/projects/54d34c21ee3836ec1000002a/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54d34c21ee3836ec1000002a) |
-
-
-
+[![Tests Status](https://github.com/NetCommons3/CircularNotices/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/NetCommons3/CircularNotices/actions/workflows/tests.yml)
+[![Coverage Status](https://coveralls.io/repos/NetCommons3/CircularNotices/badge.svg?branch=master)](https://coveralls.io/r/NetCommons3/CircularNotices?branch=master)
+[![Stable Version](https://img.shields.io/packagist/v/netcommons/circular-notices.svg?label=stable)](https://packagist.org/packages/netcommons/circular-notices)
