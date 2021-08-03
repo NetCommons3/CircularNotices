@@ -25,7 +25,7 @@ class TestViewElementsCircularNoticesTargetEditFormController extends AppControl
  * @var array
  */
 	public $helpers = array(
-		'NetCommons.TitleIcon',
+		'Groups.GroupUserList',
 	);
 
 /**

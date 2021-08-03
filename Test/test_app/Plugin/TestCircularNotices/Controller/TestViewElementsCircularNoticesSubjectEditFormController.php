@@ -25,7 +25,7 @@ class TestViewElementsCircularNoticesSubjectEditFormController extends AppContro
  * @var array
  */
 	public $helpers = array(
-		'Groups.GroupUserList',
+		'NetCommons.TitleIcon',
 	);
 
 /**
