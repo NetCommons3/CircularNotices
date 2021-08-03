@@ -27,6 +27,7 @@ class TestViewElementsCircularNoticeFrameSettingsEditFormController extends AppC
 	public $helpers = array(
 		'Mails.MailsHtml',
 		'Mails.MailForm',
+		'NetCommons.DisplayNumber',
 	);
 
 /**
