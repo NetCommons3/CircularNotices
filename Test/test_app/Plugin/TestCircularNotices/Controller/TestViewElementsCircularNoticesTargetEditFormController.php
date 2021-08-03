@@ -20,6 +20,15 @@ App::uses('AppController', 'Controller');
 class TestViewElementsCircularNoticesTargetEditFormController extends AppController {
 
 /**
+ * use helpers
+ *
+ * @var array
+ */
+	public $helpers = array(
+		'NetCommons.TitleIcon',
+	);
+
+/**
  * target_edit_form
  *
  * @return void

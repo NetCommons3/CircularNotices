@@ -20,6 +20,15 @@ App::uses('AppController', 'Controller');
 class TestViewElementsCircularNoticesSubjectEditFormController extends AppController {
 
 /**
+ * use helpers
+ *
+ * @var array
+ */
+	public $helpers = array(
+		'Groups.GroupUserList',
+	);
+
+/**
  * subject_edit_form
  *
  * @return void
