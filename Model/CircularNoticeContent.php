@@ -375,7 +375,7 @@ class CircularNoticeContent extends CircularNoticesAppModel {
 			),
 		);
 
-		if (isset($paginatorParams['reply_status'])) {
+		if (!empty($paginatorParams['reply_status'])) {
 			// 未回答の場合
 			if ($paginatorParams['reply_status'] ==
 					CircularNoticeComponent::CIRCULAR_NOTICE_CONTENT_STATUS_NOT_REPLIED) {
@@ -387,7 +387,7 @@ class CircularNoticeContent extends CircularNoticesAppModel {
 				$conditions['CircularNoticeContent.reply_status'] = (int)$paginatorParams['reply_status'];
 			}
 		}
-		if (isset($paginatorParams['content_status'])) {
+		if (!empty($paginatorParams['content_status'])) {
 			$conditions['CircularNoticeContent.content_status'] = (int)$paginatorParams['content_status'];
 		}
 

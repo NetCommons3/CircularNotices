@@ -100,13 +100,13 @@ class CircularNoticesController extends CircularNoticesAppController {
 		}
 
 		// コンテンツステータスの絞り込み値チェック
-		if (isset($this->params['named']['content_status'])
+		if (!empty($this->params['named']['content_status'])
 				&& ! $this->CircularNotice->existsContentStatus($this->params['named']['content_status'])) {
 			return $this->throwBadRequest();
 		}
 
 		// 回答状況の絞り込み値チェック
-		if (isset($this->params['named']['reply_status'])
+		if (!empty($this->params['named']['reply_status'])
 				&& ! $this->CircularNotice->existsReplyStatus($this->params['named']['reply_status'])) {
 			return $this->throwBadRequest();
 		}
