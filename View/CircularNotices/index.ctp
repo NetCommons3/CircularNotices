@@ -79,6 +79,15 @@
 					<?php echo $this->element('CircularNotices/status_label', array(
 						'circularNoticeContent' => $circularNoticeContent['CircularNoticeContent'])
 					); ?>
+
+					<!-- 回答期限 -->
+					<?php if ($circularNoticeContent['CircularNoticeContent']['use_reply_deadline']): ?>
+						<br />
+						<small>
+						<?php echo __d('circular_notices', 'Circular Content Deadline Title'); ?>
+						<?php echo $this->CircularNotice->displayDate($circularNoticeContent['CircularNoticeContent']['reply_deadline']); ?>
+						</small>
+					<?php endif; ?>
 				</h2>
 				<article class="circular-notices">
 					<div>
