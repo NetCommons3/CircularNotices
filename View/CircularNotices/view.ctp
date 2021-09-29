@@ -24,6 +24,12 @@
 		)
 	);
 ?>
+<?php
+$selections = array();
+foreach ($circularNoticeChoice as $choice) {
+	$selections[$choice['id']] = $choice['value'];
+}
+?>
 
 <header class="clearfix">
 	<div class="pull-left">
@@ -179,10 +185,8 @@
 											));
 									break;
 								case CircularNoticeComponent::CIRCULAR_NOTICE_CONTENT_REPLY_TYPE_SELECTION:
-									$selections = array();
 									$selected = '';
 									foreach ($circularNoticeChoice as $choice) :
-										$selections[$choice['id']] = $choice['value'];
 										if ($choice['id'] === $myAnswer['CircularNoticeTargetUser']['reply_selection_value']) :
 											$selected = $choice['id'];
 										endif;
@@ -197,11 +201,9 @@
 									));
 									break;
 								case CircularNoticeComponent::CIRCULAR_NOTICE_CONTENT_REPLY_TYPE_MULTIPLE_SELECTION:
-									$selections = array();
 									$selected = explode(CircularNoticeComponent::SELECTION_VALUES_DELIMITER, $myAnswer['CircularNoticeTargetUser']['reply_selection_value']);
 									$selectedValue = array();
 									foreach ($circularNoticeChoice as $choices) :
-										$selections[$choices['id']] = $choices['value'];
 										if (in_array($choices['id'], $selected, true)) :
 											$selectedValue[] = $choices['value'];
 										endif;
