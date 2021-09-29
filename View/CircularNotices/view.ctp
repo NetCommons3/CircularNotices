@@ -333,7 +333,7 @@ foreach ($circularNoticeChoice as $choice) {
 						$answer = null;
 						switch ($circularNoticeContent['reply_type']) {
 							case CircularNoticeComponent::CIRCULAR_NOTICE_CONTENT_REPLY_TYPE_TEXT:
-								$answer = nl2br(h($circularNoticeTargetUser['CircularNoticeTargetUser']['reply_text_value']));
+								$answer = $circularNoticeTargetUser['CircularNoticeTargetUser']['reply_text_value'];
 								break;
 							case CircularNoticeComponent::CIRCULAR_NOTICE_CONTENT_REPLY_TYPE_SELECTION:
 							case CircularNoticeComponent::CIRCULAR_NOTICE_CONTENT_REPLY_TYPE_MULTIPLE_SELECTION:
@@ -364,7 +364,7 @@ foreach ($circularNoticeChoice as $choice) {
 							$this->NetCommonsHtml->handleLink($circularNoticeTargetUser, array('avatar' => true), array(), 'User'),
 							array($readDatetime, array('class' => 'row-datetime')),
 							array($replyDatetime, array('class' => 'row-datetime')),
-							array(h($answer), array('class' => 'circular-notices-reply-col circular-notices-word-break')),
+							array(nl2br(h($answer)), array('class' => 'circular-notices-reply-col circular-notices-word-break')),
 						));
 					endforeach;
 				?>
