@@ -355,7 +355,13 @@ class CircularNoticesController extends CircularNoticesAppController {
 		$key = $this->request->params['key'];
 
 		$content = $this->CircularNoticeContent->getCircularNoticeContent($key, $userId);
+		// フレームから取得したCircularNoticeSetting.keyとコンテンツのcircularnotice_setting_keyが一致しない場合はBadRequest
 		if (! $content) {
+			return $this->throwBadRequest();
+		}
+
+		$settingKey = $this->viewVars['circularNoticeSetting']['CircularNoticeSetting']['key'] ?? null;
+		if ($content['CircularNoticeContent']['circular_notice_setting_key'] !== $settingKey) {
 			return $this->throwBadRequest();
 		}
 
