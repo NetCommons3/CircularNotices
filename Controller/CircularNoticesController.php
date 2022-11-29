@@ -347,6 +347,7 @@ class CircularNoticesController extends CircularNoticesAppController {
  * edit action
  *
  * @return void
+ * @SuppressWarnings(PHPMD.CyclomaticComplexity)
  */
 	public function edit() {
 		$userId = Current::read('User.id');
@@ -356,6 +357,12 @@ class CircularNoticesController extends CircularNoticesAppController {
 
 		$content = $this->CircularNoticeContent->getCircularNoticeContent($key, $userId);
 		if (! $content) {
+			return $this->throwBadRequest();
+		}
+
+		// フレームから取得したCircularNoticeSetting.keyとコンテンツのcircular_notice_setting_keyが一致しない場合はBadRequest
+		$settingKey = $this->viewVars['circularNoticeSetting']['CircularNoticeSetting']['key'] ?? null;
+		if ($content['CircularNoticeContent']['circular_notice_setting_key'] !== $settingKey) {
 			return $this->throwBadRequest();
 		}
 
