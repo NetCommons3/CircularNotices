@@ -22,6 +22,7 @@ class AllCircularNoticesTest extends CakeTestSuite {
  * All test suite
  *
  * @return CakeTestSuite
+ * @SuppressWarnings(PHPMD)
  */
 	public static function suite() {
 		$plugin = preg_replace('/^All([\w]+)Test$/', '$1', __CLASS__);
